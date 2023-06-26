@@ -19,6 +19,13 @@ float add(float x, float y) {return x + y;}
 float substract(float x, float y) {return x - y;}
 float multiply(float x, float y) {return x * y;}
 float divide(float x, float y) {return x / y;}
+float pow(float x, float y) {
+  float result = 1.f;
+  for (int i = 0; i < y; ++i) {
+    result *= x;
+  }
+  return result;
+}
 
 int main(int argc, char **argv) {
   HashTable operationHashTable = *new HashTable<float>;
@@ -38,6 +45,7 @@ int main(int argc, char **argv) {
   operationHashTable.insert("-", substract(x, y));
   operationHashTable.insert("*", multiply(x, y));
   operationHashTable.insert("/", divide(x, y));
+  operationHashTable.insert("^", pow(x, y));
 
   float result = operationHashTable.get(op);
 
